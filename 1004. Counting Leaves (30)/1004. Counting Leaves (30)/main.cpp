@@ -71,14 +71,9 @@ int main(){
 	}
 	DFS(1, 1);
 
+	//h[1] = 1;  //initialization root
 
-
-
-
-
-	h[1] = 1;  //初始化根节点
-
-	BFS(1, 1);
+	//BFS();
 
 	for (int i = 1; i <= max_h; i++ ){
 		cout << leaf[i];
