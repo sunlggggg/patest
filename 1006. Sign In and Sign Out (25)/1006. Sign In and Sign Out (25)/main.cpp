@@ -34,7 +34,7 @@ int main(){
 	int maxTime = endTime[0];
 	int maxIndex = 0;
 	for (int i = 0; i < m; i++){
-		if (endTime[i] > minTime){
+		if (endTime[i] > maxTime){
 			maxIndex = i;
 			maxTime = endTime[i];
 		}
