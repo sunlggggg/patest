@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <cstring>
 using namespace std; 
-string IntToString(int num );
+
 int main(){
 	int a ; 
 	int b ; 
@@ -22,9 +22,4 @@ int main(){
 		}
 	}
 	return 0 ; 
-}
-string IntToString(int num ){
-	while() {
-
-	}
 }
