@@ -1,6 +1,7 @@
 #include<iostream>  
 #include<stack>  
-#include<string.h>  
+#include<string.h>
+#include<stdio.h>
 using namespace std;
 #define max 1001  
 double arrayA[max];

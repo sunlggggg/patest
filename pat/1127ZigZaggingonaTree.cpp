@@ -8,9 +8,9 @@ using namespace std;
 
 /*
 description:
-1¡¢The second line gives the inorder sequence and the third line gives the postorder sequence.
+1. The second line gives the inorder sequence and the third line gives the postorder sequence.
 
-2¡¢Suppose that all the keys in a binary tree are distinct positive integers. A unique binary tree can be determined by a given pair of postorder and inorder traversal sequences. And it is a simple standard routine to print the numbers in level-order. However, if you think the problem is too simple, then you are too naive. This time you are supposed to print the numbers in "zigzagging order" -- that is, starting from the root, print the numbers level-by-level, alternating between left to right and right to left.
+2. Suppose that all the keys in a binary tree are distinct positive integers. A unique binary tree can be determined by a given pair of postorder and inorder traversal sequences. And it is a simple standard routine to print the numbers in level-order. However, if you think the problem is too simple, then you are too naive. This time you are supposed to print the numbers in "zigzagging order" -- that is, starting from the root, print the numbers level-by-level, alternating between left to right and right to left.
 
 test example :
 8
@@ -42,20 +42,20 @@ int findRootIndexFormInOrderSqu(int data, int * inOrderSqu, int inorderSqueStart
 
 Node *  bulidTree(int * inOrderSqu, int inOrderSquStartIndex, int inorderSquEndIndex, int * postOrderSqu, int postOrderSquStartIndex, int postOrderSquEndIndex, int level){
 	//if (postOrderSquStartIndex <= postOrderSquEndIndex){
-		int rootIndex = findRootIndexFormInOrderSqu(postOrderSqu[postOrderSquEndIndex], inOrderSqu, inOrderSquStartIndex, inorderSquEndIndex);
-		Node * root = NULL;
-		if (rootIndex != -1){
-			root = new Node();
-			root->level = level;
-			root->data = postOrderSqu[postOrderSquEndIndex];
-			root->rightChild = bulidTree(inOrderSqu, rootIndex + 1, inorderSquEndIndex, postOrderSqu, postOrderSquStartIndex + (rootIndex - inOrderSquStartIndex), postOrderSquEndIndex - 1, level + 1);
-			root->leftChild = bulidTree(inOrderSqu, inOrderSquStartIndex, rootIndex - 1, postOrderSqu, postOrderSquStartIndex, postOrderSquStartIndex + (rootIndex - inOrderSquStartIndex - 1), level + 1);
-		}
-		return root;
+	int rootIndex = findRootIndexFormInOrderSqu(postOrderSqu[postOrderSquEndIndex], inOrderSqu, inOrderSquStartIndex, inorderSquEndIndex);
+	Node * root = NULL;
+	if (rootIndex != -1){
+		root = new Node();
+		root->level = level;
+		root->data = postOrderSqu[postOrderSquEndIndex];
+		root->rightChild = bulidTree(inOrderSqu, rootIndex + 1, inorderSquEndIndex, postOrderSqu, postOrderSquStartIndex + (rootIndex - inOrderSquStartIndex), postOrderSquEndIndex - 1, level + 1);
+		root->leftChild = bulidTree(inOrderSqu, inOrderSquStartIndex, rootIndex - 1, postOrderSqu, postOrderSquStartIndex, postOrderSquStartIndex + (rootIndex - inOrderSquStartIndex - 1), level + 1);
+	}
+	return root;
 	//}
 }
 
-//²ã´Î±éÀú
+//level traversal
 void ZigZaggingOrder(Node * root){
 	vector<int> ret[30];
 	queue<Node *> q;
