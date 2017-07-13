@@ -7,7 +7,7 @@
 using namespace std; 
 
 int main(){
-	int a ; 
+	int a ; string IntToString(int num );
 	int b ; 
 	cin >> a ; 
 	cin >> b; 
