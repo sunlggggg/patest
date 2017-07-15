@@ -3,5 +3,5 @@ project(patest)
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(SOURCE_FILES ds/Basic/union.cpp ds/List/LinearList.c)
+set(SOURCE_FILES ds/List/DeleteSameElement018-6.cpp)
 add_executable(patest ${SOURCE_FILES})
