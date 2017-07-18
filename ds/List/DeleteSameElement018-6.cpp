@@ -1,8 +1,10 @@
 //
 // Created by sunlggggg on 2017/7/15.
 //
+#include <iostream>
 #include<stdio.h>
 #include<malloc.h>
+
 using namespace std;
 
 #define ElementType int
