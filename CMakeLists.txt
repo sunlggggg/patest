@@ -3,5 +3,5 @@ project(patest)
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(SOURCE_FILES ds/List/DeleteSameElement018-6.cpp)
+set(SOURCE_FILES ds/List/SearchExchangeInsert_Star018-9.cpp)
 add_executable(patest ${SOURCE_FILES})
