@@ -52,4 +52,3 @@ int DelSameElement(SeqList * L, int Length){
         }
     }
     return newLength;
-}
