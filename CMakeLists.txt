@@ -3,4 +3,4 @@ project(patest)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(patest ${SOURCE_FILES} ds/List/Search_k034-22Star.cpp)
+add_executable(patest ${SOURCE_FILES}  ds/Stack/IsLegal064-3.cpp)
