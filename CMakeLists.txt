@@ -3,4 +3,4 @@ project(patest)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(patest ${SOURCE_FILES} ds/Queue/SimulateQueueByStacks078-3.cpp)
+add_executable(patest ${SOURCE_FILES} ds/Stack/Recursion092-3.cpp)
