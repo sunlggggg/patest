@@ -3,4 +3,4 @@ project(patest)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(patest ${SOURCE_FILES} ds/tree/BinaryTree/Thread/PreThreadBinaryTree.cpp)
+add_executable(patest ${SOURCE_FILES} ds/tree/BinaryTree/Thread/PostThreadBinaryTree.cpp)
