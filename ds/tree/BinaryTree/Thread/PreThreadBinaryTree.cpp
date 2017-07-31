@@ -15,11 +15,11 @@ typedef enum {
 
 typedef struct BinaryTreeNode {
     BinaryTreeNode(const char data)
-            : _data(data), pLeft(NULL), pRight(NULL), Ltag(Link), Rtag(Link) {}
+            : _data(data), pLeft(NULL), pRight(NULL), lTag(Link), rTag(Link) {}
 
     char _data;
     struct BinaryTreeNode *pLeft, *pRight;
-    PointTag Ltag, Rtag;
+    PointTag lTag, rTag;
 } BiTreeNode;
 
 class Thread_BiTree {
@@ -65,19 +65,19 @@ protected:
         if (Root->pLeft == NULL) //没有左子树
         {
             Root->pLeft = Prev;   //前驱
-            Root->Ltag = Thread;
+            Root->lTag = Thread;
         }
         if (Prev != NULL && Prev->pRight == NULL) // 上一个节点有没有  右子树
         {  //Prev第一次进来 为空
             Prev->pRight = Root;   //后继
-            Prev->Rtag = Thread;
+            Prev->rTag = Thread;
         }
         Prev = Root;//前驱  ， 每次记住上次的节点
 
         //判断Root是否有左右孩子
-        if (Root->Ltag == Link)
+        if (Root->lTag == Link)
             _PreOrderThreading(Root->pLeft);
-        if (Root->Rtag == Link)
+        if (Root->rTag == Link)
             _PreOrderThreading(Root->pRight);
     }
 
@@ -88,7 +88,7 @@ protected:
         }
         BiTreeNode *pCur = Root;
         while (pCur != NULL) {
-            while (pCur->pLeft != NULL && pCur->Ltag == Link)//找到最左边的节点,左标记一直为Link
+            while (pCur->pLeft != NULL && pCur->lTag == Link)//找到最左边的节点,左标记一直为Link
             {
                 cout << pCur->_data << ' ';
                 pCur = pCur->pLeft;
@@ -96,13 +96,13 @@ protected:
             //到这来，左边的的节点还没有访问
             cout << pCur->_data << ' ';
 
-            if (pCur->Ltag == Thread)//遇到线索 就看右节点
+            if (pCur->lTag == Thread)//遇到线索 就看右节点
             {
                 pCur = pCur->pRight;
             }
             while (pCur != NULL)//循环右节点
             {
-                if (pCur->pLeft != NULL && pCur->Ltag == Link)//遇到左节点存在 ， 则访问
+                if (pCur->pLeft != NULL && pCur->lTag == Link)//遇到左节点存在 ， 则访问
                 {
                     break;
                 }
@@ -134,12 +134,12 @@ protected:
 
         if (Root->pLeft == NULL)    //根
         {
-            Root->Ltag = Thread;
+            Root->lTag = Thread;
             Root->pLeft = Prev;
         }
         if (Prev != NULL && Prev->pRight == NULL) {
             Prev->pRight = Root;
-            Prev->Rtag = Thread;
+            Prev->rTag = Thread;
         }
         Prev = Root;
         _InOrderThreading(Root->pRight);   //右
@@ -153,13 +153,13 @@ protected:
         }
         BiTreeNode *pCur = Root;
         while (pCur) {
-            while (pCur->Ltag == Link) //找最左边的节点
+            while (pCur->lTag == Link) //找最左边的节点
             {
                 pCur = pCur->pLeft;
             }
             cout << pCur->_data << ' ';
 
-            while (pCur->Rtag == Thread)//找中序后继节点
+            while (pCur->rTag == Thread)//找中序后继节点
             {
                 pCur = pCur->pRight;
                 cout << pCur->_data << ' ';
@@ -175,23 +175,21 @@ private:
 };
 
 int main() {
-    ios::sync_with_stdio(false);
-    //char * arr = "013##4##25##6##";
-    string str = "012##3##4##";
-    const char *arr = str.data();
+    //char * string1 = "013##4##25##6##";
+    string string2 = "012##3##4##";
+    const char *string1 = string2.data();
 
-    Thread_BiTree tree(arr, strlen(arr));
+    Thread_BiTree tree(string1, strlen(string1));
 
     tree.PreOrderThreading();            //先序线索化
     tree.PreOrder();                   //遍历先序线索二叉树
     cout << endl << "------------------------" << endl;
 
-    str = "013##4##25##6##" ;
-    const char *arr1 = str.data();
-    Thread_BiTree tree1(arr1, strlen(arr1));
+    string2 = "013##4##25##6##";
+    const char *string3 = string2.data();
+    Thread_BiTree tree1(string3, strlen(string3));
     tree1.InOrderThreading();          //中序线索化
-    tree1.InOrder();                //遍历中序线索二叉树
+    tree1.InOrder();                 //遍历中序线索化二叉树
     cout << endl << "------------------------" << endl;
-    cin>>str;
     return 0;
 }

@@ -6,13 +6,13 @@
 #define PUSH 'I'
 #define POP 'O'
 
-bool IsLegal(char operartes[]) {
+bool IsLegal(char operates[]) {
     int i = 0;
     bool legal = true;
     int countPush = 0;
     int countPop = 0;
-    while (operartes[i] != '\0') {
-        if (operartes[i] == POP) {
+    while (operates[i] != '\0') {
+        if (operates[i] == POP) {
             countPop++;
             if (countPop > countPush) {
                 legal = false;
