@@ -48,6 +48,8 @@ public:
     //先序--线索化二叉树
     void PreOrderThreading() {
         _PreOrderThreading(this->_pRoot);
+        this->Prev->rTag = Thread;
+        this->Prev->pRight = NULL;
     }
 
     //先序--遍历 线索二叉树
@@ -114,6 +116,7 @@ protected:
 
 public:
     //中序--线索化二叉树
+    //modify: 原先中序遍历最后一个节点无后继，但是依旧需要将其标志置为Thread
     void InOrderThreading() {
         _InOrderThreading(_pRoot);
     }
@@ -121,6 +124,9 @@ public:
     //中序--遍历线索二叉树
     void InOrder() {
         _InOrder(this->_pRoot);
+        this->Prev->rTag = Thread;
+        //下面这句可以不写
+        this->Prev->pRight = NULL;
     }
 
 protected:
@@ -176,7 +182,7 @@ private:
 
 int main() {
     //char * string1 = "013##4##25##6##";
-    string string2 = "012##3##4##";
+    string string2 = "ABC##D##E##";
     const char *string1 = string2.data();
 
     Thread_BiTree tree(string1, strlen(string1));
@@ -185,11 +191,11 @@ int main() {
     tree.PreOrder();                   //遍历先序线索二叉树
     cout << endl << "------------------------" << endl;
 
-    string2 = "013##4##25##6##";
-    const char *string3 = string2.data();
-    Thread_BiTree tree1(string3, strlen(string3));
-    tree1.InOrderThreading();          //中序线索化
-    tree1.InOrder();                 //遍历中序线索化二叉树
-    cout << endl << "------------------------" << endl;
+//    string2 = "ABC####";
+//    const char *string3 = string2.data();
+//    Thread_BiTree tree1(string3, strlen(string3));
+//    tree1.InOrderThreading();          //中序线索化
+//    tree1.InOrder();                 //遍历中序线索化二叉树
+//    cout << endl << "------------------------" << endl;
     return 0;
 }

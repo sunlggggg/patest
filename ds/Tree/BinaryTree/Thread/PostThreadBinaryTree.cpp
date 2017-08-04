@@ -46,6 +46,10 @@ public:
     //后序线索化
     void PostTreading() {
         _PostThreading(this->_pRoot);
+        //最后一个节点一定是根节点
+        if (this->Prev->pRight == NULL) {
+            this->Prev->rTag = Thread;
+        }
     }
 
 protected:
@@ -78,30 +82,35 @@ protected:
             Prev = NULL;
             while (pCur != NULL) {
                 //第一步：找树最左边的节点
-                while (pCur->pLeft != Prev && pCur->lTag == Link) //左子树
-                {
+                //modify 说明,左孩子非空一定能够找到现先续节点，因此条件1不需要
+                //while (pCur->pLeft != Prev && pCur->lTag == Link) //左子树
+                while (pCur->lTag == Link) //左子树
                     pCur = pCur->pLeft;
-                }
-                //循环结束后 pCur== Root 或者为空
+                //循环结束后 pCur== Root
 
-                //第二步：访问后继
-                while (pCur && pCur->rTag == Thread) {
+                //第二步：访问后继 ，有上可知道 pCur必定为非空
+                while ( pCur->rTag == Thread) {
                     cout << pCur->_data << ' ';
                     Prev = pCur;
                     pCur = pCur->pRight;
                 }
+                //无后继了 pCur
+
+                //只有根节点的rTag 等于Thread的同时他的右孩子还是NULL
                 //判断此时pCur是不是指向了根节点
                 if (pCur == Root) {
                     cout << pCur->_data << ' ';
                     return;
                 }
-                while (pCur && pCur->pRight == Prev) {
+
+                //pCur非空
+                while (pCur->pRight == Prev) {
                     cout << pCur->_data << ' ';
                     Prev = pCur;
                     pCur = pCur->pParent;  //往上一级走
                 }
                 //这里不能用NULL判断，而是用rTag
-                if (pCur && pCur->rTag == Link) {
+                if (pCur->rTag == Link) {
                     pCur = pCur->pRight;
                 }
             }
@@ -114,34 +123,14 @@ private:
     TriTreeNode *Prev;
 };
 
-void Test() {
-    char *arr = (char *) "013##4##25##6##";
-    PostThread_BiTree tree(arr, strlen(arr)); //构建三叉树
-    tree.PostTreading();
-    tree.PostOrder();//arr 3 4 1  5 6 2  0
-    cout << endl << "______________________" << endl;
 
-    char *arr2 = (char *) "12#3##4##";
+int main() {
+
+    char *arr2 = (char *) "A##";
     PostThread_BiTree tree1(arr2, strlen(arr2));
     tree1.PostTreading();
     tree1.PostOrder();
     cout << endl << "______________________" << endl;
 
-    char *arr3 = (char *) "12#3#4##5##";
-    PostThread_BiTree tree2(arr3, strlen(arr3));
-    tree2.PostTreading();
-    tree2.PostOrder();
-    cout << endl << "______________________" << endl;
-
-    char *arr4 = (char *) "126##3#4##5##";
-    PostThread_BiTree tree3(arr4, strlen(arr4));
-    tree3.PostTreading();
-    tree3.PostOrder();
-    cout << endl << "______________________" << endl;
-
-}
-
-int main() {
-    Test();
     return 0;
 }
