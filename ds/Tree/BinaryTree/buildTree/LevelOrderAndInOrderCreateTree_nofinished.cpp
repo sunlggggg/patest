@@ -43,6 +43,8 @@ Node *CreateTree(Node * T, char p[], int &i){
 Node * CreateTreeByLevelOrderAndInOrder(char levelOrder[],char inOrder[],
                                         int inOderFrom, int inOrderTo, int levelOrder ){
 
+    Node* node = new Node();
+
 }
 int main(){
     Tree T;
