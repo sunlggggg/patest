@@ -42,7 +42,7 @@ int main(void) {
 	unsigned long long result = 0;
 	unsigned long long r = sInt + 1;  //maximum  radix is  N1+1
 	unsigned long long l = minRadix;
-	//find suitable radix by binary search
+	//find suitable radix by binary Search
 	while (l <= r) // smaller radix >  bigger radix => is not existed
 	{   //traversal from the smallest radix
 		//find the middle radix

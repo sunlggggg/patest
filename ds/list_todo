@@ -1,4 +1,4 @@
 1. huffman ds/Tree/BinaryTree/HuffmanCode/HuffmanCode.cpp
-2. level order and inOrder build tree ds/Tree/BinaryTree/buildTree/LevelOrderAndInOrderCreateTree.cpp
+2. level order and inOrder buildSearchTree tree ds/Tree/BinaryTree/buildTree/LevelOrderAndInOrderCreateTree.cpp
 3. find the K node in pre order ds/Tree/BinaryTree/Search/SearchKthInPreOrder.cpp
 

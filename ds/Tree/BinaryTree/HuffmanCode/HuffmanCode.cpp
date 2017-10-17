@@ -67,9 +67,9 @@ public:
             iter_vet_chs_iter++;
         }
         //sort1
-        // sort(list_chs_help.begin(), list_chs_help.end(), sort_by_wei);
+        // Sort(list_chs_help.begin(), list_chs_help.end(), sort_by_wei);
         //sort2
-        // sort(this->vet_chs.begin(), this->vet_chs.end(), greater<Node *>());
+        // Sort(this->vet_chs.begin(), this->vet_chs.end(), greater<Node *>());
         list_chs_help.sort(CompareRules);
         while (list_chs_help.size() > 1) {
             int sum_wei = list_chs_help.front().ch.wei + (*++list_chs_help.begin()).ch.wei;
@@ -78,7 +78,7 @@ public:
             list_chs_help.pop_front();
             list_chs_help.pop_front();
             list_chs_help.push_front(node);
-            //sort(list_chs_help.begin(), list_chs_help.end(), sort_by_wei);
+            //Sort(list_chs_help.begin(), list_chs_help.end(), sort_by_wei);
             if (this->Root != NULL) {
 
             }
@@ -98,5 +98,6 @@ int main() {
     ve_chs.push_back(Ch('F', 2));
     HuffmanTree huffmanTree(ve_chs);
     huffmanTree.build();
+    //todo
     return 0;
 }
