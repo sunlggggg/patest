@@ -23,7 +23,7 @@ When there is an emergency call to you from some other city, your job is to lead
 to the place as quickly as possible【1】, and at the mean time, call up as many hands 【2】on the
 way as possible.
 
-Input: Each input file contains one test case. For each test case, the first line contains 4
+Input: Each input c contains one test case. For each test case, the first line contains 4
 positive integers: N (<= 500) - the number of cities (and the cities are numbered from 0 to N-1),
 M - the number of roads, C1 and C2 - the cities that you are currently in and that you must
 save, respectively. The next line contains N integers, where the i-th integer is the number of
