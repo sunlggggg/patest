@@ -14,24 +14,33 @@ typedef struct Node {
  *
  */
 void Dex_X(LinkedList &L, int x) {
+    //导致断链
     Node *p;
     if (L == NULL) {
         return;
     }
     if (L->data == x) {
         p = L;
-        //由于L是Node * L的地址 ，于是 此处直接修改了L指向的节点的的后续
-        //但是如果不使用&则实际上是将L向后移动造成断链
-        L = L->next; //if use 'LinkedList L' , the list is breakage
-                     //but use the 'LinkedList &L, the list is continuous '
-                     //when use 'LinkedList &L' , 'L = L->next' is equals to
-                     //'L->...->next = L->...->next->next'
-
-        free(p);
+        L=L->next;
+        free(p); //释放L原来指向的节点
         Dex_X(L, x);
-    }
-    else {
+    } else {
         Dex_X(L->next, x);
+    }
+}
+void Dex_X_(LinkedList L, int x) {  //如果未使用引用，那么是值传递,节点是被释放掉了，但是L = L->next 的赋值却没有传递到原来的L链表上，
+    //导致断链
+    Node *p;
+    if (L == NULL) {
+        return;
+    }
+    if (L->data == x) {
+        p = L;
+        L = L->next;//对L的修改不会保留
+        free(p); //释放L原来指向的节点
+        Dex_X_(L, x);
+    } else {
+        Dex_X_(L->next, x);
     }
 }
 /**
@@ -54,6 +63,6 @@ int main() {
     int data[10] = { 1, 2, 3, 4, 5, 1, 2, 3, 4, 5 };
     LinkedList L = NULL ,P;
     L = buildList(L, data, 0, 10);
-    Dex_X(L, 5);
+    Dex_X_(L, 4);
     return 0;
 }

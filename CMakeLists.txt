@@ -3,4 +3,4 @@ project(patest)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(patest ${SOURCE_FILES}     ds/Tree/BinarySearchTree/DeleteX.cpp)
+add_executable(patest ${SOURCE_FILES}  ds/Sort/HeapAdjust.cpp)

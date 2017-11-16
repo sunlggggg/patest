@@ -17,6 +17,7 @@ struct TreeNode {
 
 //建立二叉查找树
 void _insert(Tree &node, int data);
+
 void _buildSearch(Tree &T, int *data, int data_length);
 
 // 删除X节点
@@ -45,9 +46,9 @@ bool DeleteX(Tree &T, int X) {
                     pre = p;
                     p = p->rightChild;
                 }
-                if(pre == T) {
+                if (pre == T) {
                     pre->leftChild = p->leftChild;
-                }else {
+                } else {
                     pre->rightChild = p->leftChild;
                 }
                 T->data = p->data;
@@ -56,12 +57,12 @@ bool DeleteX(Tree &T, int X) {
                 NodePointer p = T->rightChild;
                 NodePointer pre = T;
                 while (T->leftChild) {
-                    pre = p ;
+                    pre = p;
                     p = T->leftChild;
                 }
-                if(pre == T) {
+                if (pre == T) {
                     pre->rightChild = p->rightChild;
-                }else {
+                } else {
                     pre->leftChild = p->rightChild;
                 }
                 T->data = p->data;
@@ -80,17 +81,52 @@ bool DeleteX(Tree &T, int X) {
     }
 }
 
+struct ListNode {
+    int data;
+    ListNode *next;
+};
+
 int main() {
+    int i ;
+    printf("%x",&i);
+    {
+        ListNode *n1 = (ListNode *) malloc(sizeof(ListNode));
+        ListNode *n2 = (ListNode *) malloc(sizeof(ListNode));
+        ListNode *n3 = (ListNode *) malloc(sizeof(ListNode));
+        ListNode *bb = n1;
+        n1->data = 1;
+        n2->data = 2;
+        n3->data = 3;
+        n1->next = n2;
+        n2->next = n3;
+        n1 = n1->next;
+        n1 = NULL;
+    }
+    {
+        ListNode *n1 = (ListNode *) malloc(sizeof(ListNode));
+        ListNode *n2 = (ListNode *) malloc(sizeof(ListNode));
+        ListNode *n3 = (ListNode *) malloc(sizeof(ListNode));
+        n1->data = 1;
+        n2->data = 2;
+        n3->data = 3;
+        n1->next = n2;
+        n2->next = n3;
+        ListNode *cc = n1;
+        ListNode *&bb = n1;
+        n1= n1->next;
+        bb = NULL;
+    }
+
 
     int a[] = {9, 2, 4, 4, 3, 8, 1};
     Tree T = NULL;
     _buildSearch(T, a, 7);
     DeleteX(T, 4);
-    DeleteX(T,9);
-    DeleteX(T,1);
-    DeleteX(T,3);
-    DeleteX(T,8);
-    DeleteX(T,2);
+    DeleteX(T, 9);
+    DeleteX(T, 1);
+    DeleteX(T, 3);
+    DeleteX(T, 8);
+    DeleteX(T, 2);
     return 0;
 }
 
