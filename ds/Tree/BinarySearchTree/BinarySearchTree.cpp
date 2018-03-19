@@ -93,15 +93,15 @@ private:
         if (value == -1) {
             node = NULL;
             return;
-        }
-        node = new Node(value);
-        _buildCommon(node->lChild, data);
-        _buildCommon(node->rChild, data);
     }
+    node = new Node(value);
+    _buildCommon(node->lChild, data);
+    _buildCommon(node->rChild, data);
+}
 
 public:
 
-    BST() {
+BST() {
         root = NULL;
     }
 

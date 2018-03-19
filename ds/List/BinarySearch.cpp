@@ -9,7 +9,7 @@ int bi_search(int A[], int low, int high, int key) {
     while (low <= high) {
         int mid = (low + high) / 2;
         if (A[mid] < key) //A[mid] <=  key 对应low大于目标值一个位置
-                          //A[mid] < key)  对应high小于目标值一个位置
+                          //A[mid] < key  对应high小于目标值一个位置
             low = ++mid;
         else
             high = --mid;
